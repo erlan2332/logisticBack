@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/trucks")
-@CrossOrigin(origins = "*")
+@RequestMapping("/api/trips")
+@CrossOrigin(origins = "https://logistic-4y5n.onrender.com") // Фронтенд на Render
 public class TruckController {
 
     private final TruckService truckService;

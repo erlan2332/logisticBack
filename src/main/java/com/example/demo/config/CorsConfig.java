@@ -13,11 +13,13 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/**")
+                registry.addMapping("/**")
                         .allowedOrigins("https://logistic-4y5n.onrender.com")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
-                        .allowCredentials(false); // Отключаем авторизацию, если не нужна
+                        .exposedHeaders("Access-Control-Allow-Origin")
+                        .allowCredentials(true)
+                        .maxAge(3600);
             }
         };
     }
