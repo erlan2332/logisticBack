@@ -7,7 +7,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-@EnableWebMvc
 public class CorsConfig {
     @Bean
     public WebMvcConfigurer corsConfigurer() {
@@ -15,10 +14,10 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins("*") // Разрешаем ВСЕХ (для теста)
+                        .allowedOrigins("https://logistic-4y5n.onrender.com")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
-                        .allowCredentials(false); // Без авторизации для простых API
+                        .allowCredentials(false); // Отключаем авторизацию, если не нужна
             }
         };
     }
