@@ -15,10 +15,10 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins("https://logistic-4y5n.onrender.com") // Разрешаем фронтенд
+                        .allowedOrigins("https://logistic-4y5n.onrender.com") // Разрешаем фронтенду доступ
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Разрешенные методы
                         .allowedHeaders("*") // Разрешаем все заголовки
-                        .allowCredentials(true); // Позволяем куки и заголовки авторизации
+                        .allowCredentials(true); // Позволяем авторизацию
             }
         };
     }

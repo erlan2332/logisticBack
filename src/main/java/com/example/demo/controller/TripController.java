@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/trips")
-@CrossOrigin(origins = "http://localhost:3000") // Разрешаем доступ с фронтенда
+@CrossOrigin(origins = "https://logistic-4y5n.onrender.com") // Разрешаем доступ с фронтенда
 public class TripController {
     private final TripService tripService;
     private final TruckService truckService;
