@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/trucks")
-@CrossOrigin(origins = "https://logistic-4y5n.onrender.com")
+@CrossOrigin(origins = "*")
 public class TruckController {
 
     private final TruckService truckService;
