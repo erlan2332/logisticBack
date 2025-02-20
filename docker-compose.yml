@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_truck
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 141202era
+      MYSQL_DATABASE: truck_db
+      MYSQL_USER: truck_admin
+      MYSQL_PASSWORD: 141202era
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - app_network
+
+  app:
+    build: .
+    container_name: truck_app
+    restart: always
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/truck_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: truck_admin
+      SPRING_DATASOURCE_PASSWORD: 141202era
+    depends_on:
+      - mysql
+    ports:
+      - "8080:8080"
+    networks:
+      - app_network
+
+volumes:
+  mysql_data:
+
+networks:
+  app_network:
