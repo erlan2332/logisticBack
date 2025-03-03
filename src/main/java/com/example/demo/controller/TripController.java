@@ -28,7 +28,6 @@ public class TripController {
 
     @PostMapping
     public ResponseEntity<Trip> addTrip(@RequestBody Trip trip) {
-        System.out.println("📥 Получен запрос на добавление рейса: " + trip);
 
         if (trip.getTruck() == null) {
             System.out.println(" Ошибка: truck отсутствует в JSON-запросе!");
@@ -39,14 +38,12 @@ public class TripController {
             return ResponseEntity.badRequest().body(null);
         }
 
-        // Проверяем, существует ли грузовик с таким ID
         Optional<Truck> truckOptional = truckService.getTruckById(trip.getTruck().getId());
         if (truckOptional.isEmpty()) {
             System.out.println(" Ошибка: Грузовик с ID " + trip.getTruck().getId() + " не найден!");
             return ResponseEntity.notFound().build();
         }
 
-        // Устанавливаем существующий truck в объект trip
         trip.setTruck(truckOptional.get());
         Trip savedTrip = tripService.saveTrip(trip);
 
