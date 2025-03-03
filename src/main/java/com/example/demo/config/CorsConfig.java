@@ -19,12 +19,12 @@ public class CorsConfig {
                 logger.info("✅ CORS настройки применяются...");
 
                 registry.addMapping("/**")
-                        .allowedOrigins("*") // Разрешаем запросы от всех доменов
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Все методы
-                        .allowedHeaders("*") // Все заголовки
-                        .allowCredentials(false); // Без авторизации
+                        .allowedOrigins("*") 
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") 
+                        .allowedHeaders("*") 
+                        .allowCredentials(false);
 
-                logger.info("✅ CORS настроен: все пути разрешены для всех источников");
+                logger.info("все пути разрешены для всех источников");
             }
         };
     }
