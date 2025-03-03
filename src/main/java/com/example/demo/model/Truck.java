@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) // 🔹 Предотвращаем ошибки сериализации
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) 
 public class Truck {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,10 +16,9 @@ public class Truck {
     private String colorVariant;
 
     @OneToMany(mappedBy = "truck", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnoreProperties("truck") // 🔹 Исключаем обратную связь JSON
+    @JsonIgnoreProperties("truck")
     private List<Trip> trips;
 
-    // ✅ Конструкторы, геттеры и сеттеры
     public Truck() {}
 
     public Long getId() { return id; }
