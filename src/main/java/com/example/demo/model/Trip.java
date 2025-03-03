@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) // 🔹 Защита от Hibernate ошибок
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Trip {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,12 +16,11 @@ public class Trip {
     private double payment;
     private int weight;
 
-    @ManyToOne(fetch = FetchType.LAZY) // 🔹 Ленивая загрузка (экономия ресурсов)
+    @ManyToOne(fetch = FetchType.LAZY) 
     @JoinColumn(name = "truck_id", nullable = false)
-    @JsonIgnoreProperties("trips") // 🔹 Исключаем обратную связь JSON
+    @JsonIgnoreProperties("trips") 
     private Truck truck;
 
-    // ✅ Конструкторы, геттеры и сеттеры
     public Trip() {}
 
     public Long getId() { return id; }
