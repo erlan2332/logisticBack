@@ -47,7 +47,7 @@ public class TripController {
         trip.setTruck(truckOptional.get());
         Trip savedTrip = tripService.saveTrip(trip);
 
-        System.out.println("✅ Успешно добавлен рейс: " + savedTrip);
+        System.out.println(" Успешно добавлен рейс: " + savedTrip);
         return ResponseEntity.ok(savedTrip);
     }
 
